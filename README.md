@@ -3,15 +3,17 @@
 			
 ## SAP BW
 
-**Definition**:-- Business Warehouse.
+**Definition**:-- Business Warehouse.  
 
-BW picks data from ECC and does modeling in BW.
+BW picks data from ECC and does modeling in BW.  
 *Dataflow of BW is 
 
-+ Datasource--> 
+    + Datasource--> 
 
-+DSO--> 
+    + DSO--> 
 
-+Infocube.
+    + Infocube.
 
 The data output is presented through Business Objects.
+
+
