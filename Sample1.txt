@@ -1,1 +1,2 @@
-This is sample1.Ram.
+This was sample1.Ram.
+Today is Tuesday.
