@@ -1,0 +1,26 @@
+#Story: 
+
+##A King and 7 Sons.
+
+Once upon a time, there was a king who had > seven sons.
+
+One day they went for hunting and came back with seven fishes.
+
+They let them dry in the sun. One of the fish didn't dry.
+ 
+When they asked the fish why it didn't get dry, it said "Hay stack blocked it".
+ 
+When they asked why Hay Stack blocked the sun, it replied, cow didn't eat it.
+
+When they asked cow why it didn't ear the hay stack, it replied: "cowherd didn't allow it to eat". 
+
+They go ask the cowherd, why he didn't allow cow to eat the grass, he replies that mom didn't fed him.
+ 
+They go to mother and ask why she didn't fed cowherd, she replies my little son cried. 
+
+They again go to little boy and ask him why he cried, he replies ant bit him.
+
+When they ask ant, it says it bit him because he put his finger into the nest.
+
+Links:
+www.git.com\\gihub9.
