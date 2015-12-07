@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>qplot() or ggplot() can be used</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<p>library(ggplot2);</p>
+
+<p>data(diamonds);
+help(diamonds);
+dim(diamonds);
+names(diamonds);
+head(diamonds);
+rm(diamonds)</p>
+
+<p>diamonds &lt;- diamonds[sample(1:nrow(diamonds),1000,replace=F),]</p>
+
+<h1>qplot() or ggplot() can be used</h1>
+
+<h1>qplot() comes with some default values</h1>
+
+<p>qplot(data=diamonds, x=carat, y=price, color=color, geom=&ldquo;point&rdquo;);</p>
+
+<h1>ggplot() provides more control than qplot()</h1>
+
+<h1>ggplot() gives basic plot. Layers should be added. No default values</h1>
+
+<p>ggplot(data=diamonds, aes(x=carat, y=price)) + 
+      geom_point(aes(color=color))</p>
+
+<h1>returns the previously closed plot</h1>
+
+<p>last_plot();</p>
+
+<h1>save the plot as a jpeg or png or bmp file</h1>
+
+<p>ggsave(&ldquo;diamonds.tiff&rdquo;, height=5, width=5);</p>
+
+<p>#&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;
+ggplot(data=diamonds, aes(x=carat, y=price)) + 
+      geom_point(aes(color=color, size=carat))</p>
+
+<p>ggplot(data=diamonds, aes(x=carat, y=price)) + 
+      geom_point(aes(color=color, shape=cut))</p>
+
+<h1>Factes for subsetting the data:  formula: row variables ~ column variables</h1>
+
+<p>g &lt;- ggplot(data=diamonds, aes(x=carat, y=price));
+g &lt;- g + geom_point(aes(color=color))</p>
+
+<h1>columnwise subsets</h1>
+
+<p>g + facet_grid(.~cut)</p>
+
+<h1>rowwise subsets</h1>
+
+<p>g + facet_grid(cut~.)</p>
+
+<h1>rowwise and columnwise subsets</h1>
+
+<p>g + facet_grid(cut~clarity)
+g + facet_grid(cut~clarity, labeller=label_both)</p>
+
+<p>g + facet_wrap(~cut)
+g + facet_wrap(~clarity)</p>
+
+<h1>Labels</h1>
+
+<p>g + ggtitle(&ldquo;Diamonds&rdquo;)
+g + ggtitle(&ldquo;Diamonds&rdquo;) + xlab(&ldquo;Carat Size&rdquo;) + ylab(&ldquo;Price in $&rdquo;)</p>
+
+<h1>Themes</h1>
+
+<p>g + theme_bw();
+g + theme_classic();
+g + theme_grey();         # default
+g + theme_minimal();</p>
+
+<h1>Legends</h1>
+
+<p>g + theme(legend.position=&ldquo;left&rdquo;)</p>
+
+<h1>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</h1>
+
+<h1>with iris data</h1>
+
+<p>g &lt;- ggplot(data=iris, aes(x=Petal.Length, y=Petal.Width)) +
+    geom_point(aes(color=Species))
+g</p>
+
+<p>g + geom_point(aes(color=Species, size=Petal.Width))</p>
+
+<p>g + geom_point(aes(color=Species, shape=Species))</p>
+
+<h1>columnwise subsets</h1>
+
+<p>g + facet_grid(.~Species)</p>
+
+<h1>columnwise subsets</h1>
+
+<p>g + facet_grid(Species~.)</p>
+
+<h1>columnwise subsets</h1>
+
+<p>g + facet_grid(Species~.)</p>
+
+<h1>rowwise, columnwise subsets</h1>
+
+<p>g + facet_grid(Species~Species)</p>
+
+<p>g + facet_wrap(~Species)</p>
+
+<p>#&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</p>
+
+</body>
+
+</html>
